@@ -1,0 +1,88 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Soft peach gradient background */
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #fdf0e6, #fbc7d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glassmorphism Auth Container */
+.auth-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 360px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  color: #3a3a3a;
+  text-align: center;
+}
+
+/* Headings */
+.auth-container h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #2d2d2d;
+}
+
+/* Input fields */
+.auth-container input {
+  width: 100%;
+  padding: 14px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  color: #333;
+  font-size: 15px;
+  outline: none;
+}
+
+/* Placeholder fix */
+.auth-container input::placeholder {
+  color: #555;
+  opacity: 1;
+}
+
+/* Button with soft rose gradient */
+.auth-container button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 16px;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4a4a4a;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.auth-container button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #f6d3d3, #f3b6b6);
+}
+
+/* Links */
+.auth-container a {
+  color: #6a4e4e;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 14px;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}

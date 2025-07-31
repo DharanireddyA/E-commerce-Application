@@ -1,0 +1,173 @@
+<!DOCTYPE html> 
+<html lang="en">  <head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>Home - E-Commerce</title>  
+  <style>  
+    *{  
+      box-sizing: border-box;  
+    }
+  body {  
+  margin: 0;  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+  background: linear-gradient(to right, #f9e8dd, #bcbfc4);  
+  color: #563328;
+}  header {
+background-color: #563328;
+padding: 20px;
+color: white;
+text-align: center;
+}
+  nav {
+    background-color:#f9f1ee;
+    padding: 10px;
+    text-align: center;
+  }
+  nav a {
+    color: #100b0a;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+header h1 {
+margin: 0;
+font-size: 32px;
+}
+.logout {
+display: flex;
+justify-content: flex-end;
+padding: 10px 20px;
+}
+.logout button {
+background-color: #563328;
+color: white;
+border: none;
+padding: 8px 1px;
+border-radius: 8px;
+cursor: pointer;
+font-size: 14px;
+transition: background-color 0.3s ease;
+}
+.logout button:hover {
+background-color: #563328;
+}
+.container {
+padding: 30px 15px;
+max-width: 1000px;
+margin: auto;
+}
+.welcome {
+font-size: 22px;
+margin-bottom: 25px;
+text-align: center;
+}
+.categories {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 20px;
+}
+.category-card {
+background-color: #fff;
+border-radius: 12px;
+padding: 15px;
+text-align: center;
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+transition: transform 0.2s ease, box-shadow 0.3s ease;
+cursor: pointer;
+text-decoration: none;
+color: #563328;
+}
+.category-card:hover {
+transform: translateY(-4px);
+box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+.category-card img {
+width: 100%;
+max-width: 120px;
+height: 120px;
+object-fit: cover;
+border-radius: 10px;
+margin-bottom: 12px;
+}
+.category-card h3 {
+margin: 0;
+font-size: 18px;
+}
+@media screen and (max-width: 500px) {
+.welcome {
+font-size: 18px;
+}
+.category-card img {
+max-width: 100px;
+height: 100px;
+}
+.category-card h3 {
+font-size: 16px;
+}
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('images/background.jpeg'); /* Replace with your actual image path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: #563328;
+}
+</style>  
+</head>  
+<body>
+  <script src="index.js"></script>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+  
+  <header>  
+    <h1>Trendy Treasure</h1>  
+  </header>    <div class="logout">  
+    <button onclick="logout()">Logout</button>  
+  </div>    <div class="container">  
+    <div class="welcome" id="welcomeText">  
+      Welcome to our E-Commerce Store!  
+    </div>  <div class="categories" id="categories">
+<a href="http://localhost:8080/category.html?category=earrings" class="category-card">  
+  <img src="images/earrings.webp" alt="Earrings" />  
+  <h3>Earrings</h3>  
+</a>  
+<a href="http://localhost:8080/category.html?category=Necklace" class="category-card">  
+  <img src="images/necklace1.webp" alt="Necklaces" />  
+  <h3>Necklaces</h3>  
+</a>  
+<a href="http://localhost:8080/category.html?category=Bracelet" class="category-card">  
+  <img src="images/bracelets.jpeg" alt="Bracelets" />  
+  <h3>Bracelets</h3>  
+</a>  
+<a href="http://localhost:8080/category.html?category=Ring" class="category-card">  
+  <img src="images/rings.jpeg" alt="Rings" />  
+  <h3>Rings</h3>  
+</a>  
+</div>
+  </div>    
+  <script>
+  window.onload = () => {
+    const email = localStorage.getItem("userEmail");
+    if (!email) {
+      // Redirect to login page (correct one)
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("welcomeText").innerText =
+        "Welcome back, " + email + "!";
+    }
+  };
+
+  function logout() {
+    localStorage.removeItem("userEmail");
+    alert("Logged out successfully!");
+    window.location.href = "login.html";
+  }
+</script>
+</body>
+</html>

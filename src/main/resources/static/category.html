@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">  
+  <title>ShopEase | Category</title>  
+  <style>  
+  nav {
+    background-color:white;
+    padding: 10px;
+    text-align: center;
+  }
+  nav a {
+    color: #0d0b0a;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+    body {  
+      font-family: Arial, sans-serif;  
+      padding: 20px;  
+    }  
+    h2 {  
+      text-align: center;  
+    }  
+
+    .product-grid {  
+      display: flex;  
+      flex-wrap: wrap;  
+      gap: 20px;  
+      justify-content: center;  
+      margin-top: 20px;  
+    }  
+
+    .product-card {  
+      border: 1px solid #ccc;  
+      border-radius: 8px;  
+      width: 200px;  
+      padding: 10px;  
+      text-align: center;  
+    }  
+
+    .product-card img {  
+      width: 100%;  
+      height: 150px;  
+      object-fit: cover;  
+      border-radius: 5px;  
+    }  
+
+    .product-card button {  
+      margin-top: 10px;  
+      padding: 5px 10px;  
+      background-color: #2e7d32;  
+      color: white;  
+      border: none;  
+      border-radius: 5px;  
+      cursor: pointer;  
+    }  
+
+    .product-card button:hover {  
+      background-color: #1b5e20;  
+    }
+  </style>  
+</head>  
+<body>  
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="cart.html">Cart</a>
+  </nav>
+  <h2 id="category-title">Category Products</h2>  
+  <div class="product-grid" id="category-products"></div>   
+  <div id="productContainer"></div> 
+
+  <script>  
+    document.addEventListener("DOMContentLoaded", () => {  
+      const urlParams = new URLSearchParams(window.location.search);  
+      const category = urlParams.get("category");  
+  
+      if (category) {  
+        document.getElementById("category-title").innerText = category + " Products";  
+        loadCategoryProducts(category);  
+      }  
+  
+      function loadCategoryProducts(category) {  
+        fetch(`http://localhost:8080/products/category/${category}`)  
+          .then(response => response.json())  
+          .then(products => {  
+            console.log(products);
+            const container = document.getElementById("category-products");  
+            container.innerHTML = "";  
+  
+            if (products.length === 0) {  
+              container.innerHTML = "<p>No products found in this category.</p>";  
+              return;  
+            }  
+  
+            products.forEach(product => {  
+              const card = document.createElement("div");  
+              card.className = "product-card";  
+  
+              const img = document.createElement("img");  
+              img.src = "/images/" + product.image;  
+              img.alt = product.name;  
+  
+              const name = document.createElement("h4");  
+              name.textContent = product.name;  
+  
+              const price = document.createElement("p");  
+              price.textContent = "₹" + product.price;  
+
+              // ✅ View Details button as a link to product-details.html
+              const btnLink = document.createElement("a");
+              btnLink.href = `product_details.html?id=${product.id}`;
+
+              const btn = document.createElement("button");
+              btn.textContent = "View Details";
+
+              btnLink.appendChild(btn);
+
+              card.appendChild(img);  
+              card.appendChild(name);  
+              card.appendChild(price);  
+              card.appendChild(btnLink);  
+  
+              container.appendChild(card);  
+            });  
+          })  
+          .catch(error => {  
+            console.error("Error fetching products:", error);  
+          });  
+      }  
+    }); 
+    src=category.js 
+  </script>  
+</body>  
+</html>
